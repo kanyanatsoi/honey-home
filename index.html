@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Honey Home</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fffaf0;
+  color: #4b321c;
+}
+
+header {
+  background: #f5cf76;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 42px;
+  margin: 0;
+}
+
+header p {
+  font-size: 18px;
+}
+
+nav {
+  background: #7a4b20;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 15px;
+}
+
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero h2 {
+  font-size: 30px;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 30px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.price {
+  font-size: 26px;
+  color: #b77919;
+  font-weight: bold;
+}
+
+button {
+  background: #b77919;
+  color: white;
+  border: none;
+  padding: 13px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #895610;
+}
+
+.order {
+  background: #fff1cf;
+  margin: 30px;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.order input, .order select {
+  width: 90%;
+  max-width: 400px;
+  padding: 12px;
+  margin: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+footer {
+  background: #7a4b20;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🍯 Honey Home</h1>
+  <p>Pure Honey • Natural Goodness</p>
+  <p>น้ำผึ้งแท้ 100% หอมหวานจากธรรมชาติ</p>
+</header>
+
+<nav>
+  <a href="#home">หน้าแรก</a>
+  <a href="#products">สินค้า</a>
+  <a href="#order">สั่งซื้อ</a>
+</nav>
+
+<section class="hero" id="home">
+  <h2>ความหวานจากธรรมชาติ</h2>
+  <p>น้ำผึ้งแท้ คุณภาพดี หอมหวาน เหมาะสำหรับทุกวัน</p>
+</section>
+
+<section class="products" id="products">
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=600&q=80" alt="น้ำผึ้ง 250 กรัม">
+    <h2>Pure Honey 250g</h2>
+    <p>น้ำผึ้งแท้ 100% หอมหวานจากธรรมชาติ</p>
+    <p class="price">129 บาท</p>
+    <button onclick="chooseProduct('Pure Honey 250g - 129 บาท')">
+      สั่งซื้อสินค้า
+    </button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=600&q=80" alt="น้ำผึ้ง 500 กรัม">
+    <h2>Pure Honey 500g</h2>
+    <p>น้ำผึ้งแท้ 100% เหมาะสำหรับเครื่องดื่มและอาหาร</p>
+    <p class="price">229 บาท</p>
+    <button onclick="chooseProduct('Pure Honey 500g - 229 บาท')">
+      สั่งซื้อสินค้า
+    </button>
+  </div>
+
+</section>
+
+<section class="order" id="order">
+  <h2>🛒 แบบฟอร์มสั่งซื้อ</h2>
+  <p>กรอกข้อมูลเพื่อแจ้งรายการสั่งซื้อ</p>
+
+  <form onsubmit="submitOrder(event)">
+    <input id="customer" placeholder="ชื่อผู้สั่งซื้อ" required>
+    <br>
+    <input id="phone" placeholder="เบอร์โทรศัพท์" required>
+    <br>
+    <select id="product" required>
+      <option value="">เลือกสินค้า</option>
+      <option>Pure Honey 250g - 129 บาท</option>
+      <option>Pure Honey 500g - 229 บาท</option>
+    </select>
+    <br>
+    <input id="quantity" type="number" min="1" value="1" required>
+    <br>
+    <input id="address" placeholder="ที่อยู่จัดส่ง" required>
+    <br>
+    <button type="submit">ยืนยันรายการ</button>
+  </form>
+</section>
+
+<footer>
+  <p>Honey Home 🍯</p>
+  <p>Pure Honey • Natural Goodness</p>
+  <p>ขอบคุณที่สนับสนุนร้าน Honey Home</p>
+</footer>
+
+<script>
+function chooseProduct(name) {
+  document.getElementById("product").value = name;
+  document.getElementById("order").scrollIntoView({behavior:"smooth"});
+}
+
+function submitOrder(event) {
+  event.preventDefault();
+
+  const customer = document.getElementById("customer").value;
+  const phone = document.getElementById("phone").value;
+  const product = document.getElementById("product").value;
+  const quantity = document.getElementById("quantity").value;
+  const address = document.getElementById("address").value;
+
+  alert(
+    "รายการสั่งซื้อ\\n" +
+    "ชื่อ: " + customer + "\\n" +
+    "โทร: " + phone + "\\n" +
+    "สินค้า: " + product + "\\n" +
+    "จำนวน: " + quantity + "\\n" +
+    "ที่อยู่: " + address +
+    "\\n\\nขอบคุณที่สั่งซื้อ Honey Home"
+  );
+}
+</script>
+
+</body>
+</html>
